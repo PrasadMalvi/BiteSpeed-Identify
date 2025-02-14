@@ -6,9 +6,15 @@ const pool = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
+});
+
+pool.query("SELECT 1", (err, results) => {
+  if (err) console.error("DB Connection Failed:", err);
+  else console.log("DB Connected Successfully!");
 });
 
 module.exports = pool.promise();
