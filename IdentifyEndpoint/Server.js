@@ -8,10 +8,6 @@ app.use(cors());
 const PORT = process.env.PORT || 5051;
 
 //Route
-app.get("/", (req, res) => {
-  res.send("Server is running!");
-});
-
 app.use("/identify", require("./Routes/IdentifyRoute"));
 
 app.listen(PORT, () => {
